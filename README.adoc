@@ -1,0 +1,17 @@
+= Gpu matrix test =
+
+== Description ==
+
+This is a simple test to compare the performance of matrix multiplication on the CPU and GPU.
+
+== How to run ==
+
+To run the test, execute the following command:
+
+[source,bash]
+----
+gcc -o run-me run-me.c matrix-on-cpu.c test-utils.c
+
+./run-me.o
+----
+(or alternatively, `./run-me.exe` on Windows).
