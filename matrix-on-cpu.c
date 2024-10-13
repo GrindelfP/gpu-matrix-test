@@ -14,29 +14,17 @@
     * @param p Size of the matrices
  */
 void multiplyMatrix(double** A, double** B, double** C, int n, int m, int p) {
-    // Инициализация результирующей матрицы
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < p; j++) {
             C[i][j] = 0;
         }
     }
 
-    // Индикатор выполнения
-    const char* spinner = "|/-\\";
-    int spinnerIndex = 0;
-
-    // Умножение матриц
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < p; j++) {
             for (int k = 0; k < m; k++) {
                 C[i][j] += A[i][k] * B[k][j];
             }
-            printf("\rProcessing C[%d][%d]... %c", i, j, spinner[spinnerIndex]);
-            fflush(stdout);
-            spinnerIndex = (spinnerIndex + 1) % 4;
-            usleep(100000);
         }
     }
-
-    printf("\nMultiplication done.\n");
 }

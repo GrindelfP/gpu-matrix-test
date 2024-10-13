@@ -5,9 +5,18 @@
 #include "matrix-on-cpu.h"
 #include "test-utils.h"
 
-int main(int atgc, char** argv) {
+int main(int argc, char** argv) {
 
-    int n = 5000, m = 7500, p = 10000;
+    int n, m, p;
+
+    if (argc != 4) {
+        printf("Usage: %s <n> <m> <p>\n", argv[0]);
+        return 1;
+    } else {
+        n = atoi(argv[1]);
+        m = atoi(argv[2]);
+        p = atoi(argv[3]);
+    }
 
     srand(time(NULL));
 
@@ -31,17 +40,6 @@ int main(int atgc, char** argv) {
     clock_t end = clock();
 
     double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
-
-    // printf("Matrix A:\n");
-    // printMatrix(A, n, m);
-
-    // printf("Matrix B:\n");
-    // printMatrix(B, m, p);
-
-
-    // printf("Matrix C (Result of A * B):\n");
-
-    // printMatrix(C, n, p);
     
     printf("Matrix multiplication took %f seconds to execute.\n", time_taken);
 
